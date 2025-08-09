@@ -5,7 +5,7 @@ import {CreateUserParams, GetMenuParams, SignInParams} from "@/type";
 export const appwriteConfig = {
     endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT!,
     projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID!,
-    platform: "com.delivery_food",
+    platform: "com.Food_Delivery",
     databaseId: '6893d1c600313c66c817',
     userCollectionId: '6893d2060020cbee4c6e',
 

@@ -1,14 +1,24 @@
-import {Redirect, Slot, Tabs} from "expo-router";
-import {TabBarIconProps} from "@/type";
-import {Image, Text, View} from "react-native";
-import {images} from "@/constants";
-import cn from "clsx";
+import { Slot, useRouter } from "expo-router";
+import { useEffect, useState } from "react";
 
+export default function AuthLayout() {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const router = useRouter();
 
-export default function TabLayout() {
-   const  isAuthenticated  = false;
+  useEffect(() => {
+    // Ici tu vérifies la session
+    setIsAuthenticated(false); // Simule: pas connecté
+  }, []);
 
-     if(!isAuthenticated) return <Redirect href="/sign-in" />
+  useEffect(() => {
+    if (isAuthenticated === true) {
+      router.replace("/(tabs)");
+    }
+  }, [isAuthenticated]);
 
-    return <Slot/>
+  if (isAuthenticated === null) {
+    return null; // écran vide le temps de vérifier la session
+  }
+
+  return <Slot />;
 }
